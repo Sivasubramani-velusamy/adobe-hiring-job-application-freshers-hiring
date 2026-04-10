@@ -326,7 +326,10 @@ function initApplicationPage() {
   function saveDraft() {
     const draft = collectFormData();
     saveFormDraft(draft);
-    saveCurrentUser({ email: emailInput.value.trim(), password: currentUser.password });
+    const currentUserData = getCurrentUser();
+    if (currentUserData) {
+      saveCurrentUser(currentUserData);
+    }
   }
 
   function collectFormData() {
