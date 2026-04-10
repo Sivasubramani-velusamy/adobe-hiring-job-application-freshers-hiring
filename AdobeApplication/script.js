@@ -234,9 +234,6 @@ function initApplicationPage() {
 
   const formFields = Array.from(form.querySelectorAll("input, select, textarea"));
 
-  const emailInput = document.getElementById("application-email");
-  emailInput.value = currentUser.email || "";
-
   applyDraft();
   updateStep();
 
