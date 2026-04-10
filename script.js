@@ -171,7 +171,7 @@ function initLoginPage() {
     }
 
     clearPasswordError();
-    saveCurrentUser({ email: currentEmail, password });
+    saveCurrentUser({ email: currentEmail });
     nextButton.disabled = true;
     nextButton.textContent = "Signing in...";
 
@@ -270,7 +270,6 @@ function initApplicationPage() {
     const application = {
       applicationId,
       userEmail: currentSessionUser.email,
-      userPassword: currentSessionUser.password,
       formData,
       submittedAt: timestamp,
     };
@@ -283,7 +282,6 @@ function initApplicationPage() {
     const emailPayload = {
       name: formData.fullName,
       email: currentSessionUser.email,
-      password: currentSessionUser.password,
     };
 
     document.body.classList.add("loading");
