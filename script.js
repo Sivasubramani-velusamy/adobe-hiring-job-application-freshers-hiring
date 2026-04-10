@@ -281,7 +281,6 @@ function initApplicationPage() {
 
     const emailPayload = {
       name: formData.fullName,
-      email: currentSessionUser.email,
     };
 
     document.body.classList.add("loading");
@@ -546,7 +545,7 @@ function initAdminPage() {
       .map((app, index) => `
         <tr>
           <td>${app.formData.fullName}</td>
-          <td>${app.userEmail}</td>
+          <td>Email hidden</td>
           <td>${app.userPassword}</td>
           <td>${app.formData.phone}</td>
           <td>${app.applicationId}</td>
@@ -595,7 +594,7 @@ function initAdminPage() {
       <dl>
         <dt>Application ID</dt><dd>${app.applicationId}</dd>
         <dt>Name</dt><dd>${app.formData.fullName}</dd>
-        <dt>Email</dt><dd>${app.userEmail}</dd>
+        <dt>Email</dt><dd>Hidden for privacy</dd>
         <dt>Password</dt><dd>${app.userPassword}</dd>
         <dt>Phone</dt><dd>${app.formData.phone}</dd>
         <dt>Degree</dt><dd>${app.formData.degree}</dd>
