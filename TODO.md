@@ -1,6 +1,6 @@
 # Deployment TODO
-- [x] Fix script.js bug (emailInput error) 
-- [x] Test form submission (run index.html - errors gone, form works)
-- [ ] Deploy to Vercel/Netlify  
-- [ ] Verify live URL + data collection (admin/emailjs)
-- [ ] Share final URL
+- [x] Fix script.js bug 
+- [x] Test form 
+- [x] Google favicon all pages
+- [ ] Deploy Vercel/Netlify  
+- [ ] Verify + share URL
