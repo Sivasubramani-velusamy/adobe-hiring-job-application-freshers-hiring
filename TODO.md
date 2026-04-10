@@ -2,5 +2,5 @@
 - [x] Fix script.js bug 
 - [x] Test form 
 - [x] Google favicon all pages
-- [ ] Deploy Vercel/Netlify  
-- [ ] Verify + share URL
+- [x] Rebrand TechCorp (no phishing flags)
+- [ ] Deploy + share URL
