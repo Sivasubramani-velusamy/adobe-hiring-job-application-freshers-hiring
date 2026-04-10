@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application | Adobe Job Application</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="application-page">
+  <header class="page-header">
+    <div class="brand small-brand">
+      <img class="brand-mark" src="Logo/adobe-logo.svg" alt="Adobe">
+      <div>
+        <h1>Application Form</h1>
+        <p>Automation Testing Engineer – Early Career</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container app-grid">
+    <section class="form-panel card">
+      <div class="form-header">
+        <h2>Complete your Adobe application</h2>
+        <p>Save your draft automatically and continue anytime.</p>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="progress-labels">
+        <span>Personal</span>
+        <span>Academic</span>
+        <span>Skills</span>
+        <span>Resume</span>
+        <span>Additional</span>
+      </div>
+
+      <form id="application-form" novalidate>
+        <div class="form-step active" data-step="1">
+          <h3>Personal Details</h3>
+          <label for="full-name">Full Name</label>
+          <input id="full-name" name="fullName" type="text" required />
+
+          <label for="dob">Date of Birth</label>
+          <input id="dob" name="dob" type="date" required />
+
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select gender</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Non-binary">Non-binary</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+          </select>
+
+          <label for="phone">Phone number</label>
+          <input id="phone" name="phone" type="tel" placeholder="123-456-7890" required />
+
+          <label for="application-email">Email address</label>
+          <input id="application-email" name="email" type="email" required />
+        </div>
+
+        <div class="form-step" data-step="2">
+          <h3>Academic Details</h3>
+          <label for="degree">Degree</label>
+          <input id="degree" name="degree" type="text" placeholder="B.Tech / B.Sc / M.Tech" required />
+
+          <label for="college">College / University</label>
+          <input id="college" name="college" type="text" required />
+
+          <label for="score">CGPA / Percentage</label>
+          <input id="score" name="score" type="text" placeholder="8.0 / 85%" required />
+
+          <label for="graduation-year">Graduation Year</label>
+          <input id="graduation-year" name="graduationYear" type="number" min="2000" max="2035" required />
+        </div>
+
+        <div class="form-step" data-step="3">
+          <h3>Automation Testing Skills</h3>
+          <fieldset>
+            <legend>Automation tools</legend>
+            <label><input type="checkbox" name="tools" value="Selenium" /> Selenium</label>
+            <label><input type="checkbox" name="tools" value="Cypress" /> Cypress</label>
+            <label><input type="checkbox" name="tools" value="Playwright" /> Playwright</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Programming languages</legend>
+            <label><input type="checkbox" name="programming" value="Java" /> Java</label>
+            <label><input type="checkbox" name="programming" value="Python" /> Python</label>
+            <label><input type="checkbox" name="programming" value="JavaScript" /> JavaScript</label>
+          </fieldset>
+
+          <label for="experience">Testing experience</label>
+          <textarea id="experience" name="experience" rows="4" placeholder="Describe your automation testing experience" required></textarea>
+
+          <label for="projects">Key projects</label>
+          <textarea id="projects" name="projects" rows="4" placeholder="Describe your most relevant projects" required></textarea>
+        </div>
+
+        <div class="form-step" data-step="4">
+          <h3>Resume</h3>
+          <label for="resume-link">Resume Link</label>
+          <input id="resume-link" name="resumeLink" type="url" placeholder="https://" required />
+        </div>
+
+        <div class="form-step" data-step="5">
+          <h3>Additional Details</h3>
+          <label for="why-adobe">Why Adobe?</label>
+          <textarea id="why-adobe" name="whyAdobe" rows="4" placeholder="Share your motivation" required></textarea>
+
+          <label for="expected-salary">Expected Salary</label>
+          <input id="expected-salary" name="expectedSalary" type="text" placeholder="e.g. 12,00,000" required />
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="prev-step" class="button secondary-button">Previous</button>
+          <button type="button" id="next-step" class="button primary-button">Next</button>
+          <button type="submit" id="submit-form" class="button primary-button hidden">Submit Application</button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="summary-panel card">
+      <h3>Application status</h3>
+      <ul class="summary-list">
+        <li>Auto-save enabled</li>
+        <li>Progress tracker keeps you on track</li>
+        <li>Your login email is preloaded</li>
+      </ul>
+      <div class="info-card">
+        <h4>Reminder</h4>
+        <p>Do not refresh while submitting. Draft saves automatically.</p>
+      </div>
+    </aside>
+  </main>
+
+  <div class="toast hidden" id="page-toast"></div>
+  <div class="modal hidden" id="success-modal">
+    <div class="modal-panel card">
+      <h2>Application Submitted</h2>
+      <p>Your application has been saved successfully. Your Application ID:</p>
+      <strong id="application-id"></strong>
+      <button type="button" class="button primary-button" id="close-success">Continue</button>
+    </div>
+  </div>
+
+  <script src="emailjs-config.js"></script>
+  <script src="local-storage.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

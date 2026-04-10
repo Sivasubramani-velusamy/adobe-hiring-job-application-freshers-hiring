@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | Adobe Job Application</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="admin-login-page">
+  <main class="auth-page container">
+    <div class="auth-card card">
+      <h2>Adobe Admin Portal</h2>
+      <p>Enter administrator credentials to review applications.</p>
+
+      <form id="admin-login-form" novalidate>
+        <label for="admin-email">Email address</label>
+        <input id="admin-email" name="email" type="email" placeholder="admin@adobe.com" required />
+
+        <label for="admin-password">Password</label>
+        <input id="admin-password" name="password" type="password" placeholder="Enter admin password" required />
+
+        <p class="field-error" id="admin-login-error"></p>
+        <button type="submit" class="button primary-button">Login</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="local-storage.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

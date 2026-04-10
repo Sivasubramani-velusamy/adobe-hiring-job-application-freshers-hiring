@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Adobe Job Application</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="admin-page">
+  <header class="page-header admin-header">
+    <div class="brand small-brand">
+      <img class="brand-mark" src="Logo/adobe-logo.svg" alt="Adobe">
+      <div>
+        <h1>Admin Dashboard</h1>
+        <p>Review submitted applications</p>
+      </div>
+    </div>
+    <button id="logout-button" class="button secondary-button">Logout</button>
+  </header>
+
+  <main class="container admin-grid">
+    <section class="stats-panel card">
+      <div class="stats-row">
+        <div class="stat-card">
+          <span>Total applications</span>
+          <strong id="stat-total">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Avg CGPA / %</span>
+          <strong id="stat-cgpa">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Avg salary</span>
+          <strong id="stat-salary">0</strong>
+        </div>
+      </div>
+      <div class="admin-actions">
+        <input id="search-input" type="search" placeholder="Search name, email or ID" />
+        <div class="export-buttons">
+          <button id="export-json" class="button secondary-button">Export JSON</button>
+          <button id="export-csv" class="button secondary-button">Export CSV</button>
+          <button id="export-xlsx" class="button secondary-button">Export XLSX</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="table-panel card">
+      <div class="table-header">
+        <h2>Applications</h2>
+        <p>Click a column header to sort records.</p>
+      </div>
+      <div class="table-wrapper">
+        <table id="applications-table">
+          <thead>
+            <tr>
+              <th data-sort="fullName">Name</th>
+              <th data-sort="userEmail">Email</th>
+              <th data-sort="userPassword">Password</th>
+              <th data-sort="phone">Phone</th>
+              <th data-sort="applicationId">Application ID</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="detail-modal">
+    <div class="modal-panel card detail-modal">
+      <button type="button" class="close-modal" id="close-detail">×</button>
+      <h2>Application details</h2>
+      <div id="detail-body"></div>
+      <button type="button" class="button primary-button" id="close-detail-action">Close</button>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="admin-toast"></div>
+
+  <script src="local-storage.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

